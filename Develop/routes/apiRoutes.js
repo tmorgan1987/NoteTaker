@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
 const path = require('path');
 
@@ -12,9 +13,26 @@ router.get('/notes', (req, res) => {
 }
 );
 
-router.post('notes', (req, res) => {
-	
-})
+router.post('/notes', (req, res) => {
+	const { title, text } = req.body;
+	if (title && text) {
+		const newNote = {
+			title,
+			text,
+			note_id: uuidv4
+		};
+		readAppend(newNote, './db/db.json');
+
+		const response = {
+			status: 'success',
+			body: newNote,
+		};
+
+		res.json(response);
+	} else {
+		res.json('Error in posting feedback');
+	}
+});
 
 module.exports = router;
 
