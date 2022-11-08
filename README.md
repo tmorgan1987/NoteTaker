@@ -28,4 +28,4 @@ github : tmorgan1987
 ## License
 mit
 
-<img src=">
+<img src="C:\Users\Troy\Desktop\NoteTaker\Assets\notetakerscreener.jpg">
